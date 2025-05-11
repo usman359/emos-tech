@@ -128,6 +128,7 @@ const Header = () => {
       {/* Button for tablets and above */}
       <div className="md:h-[35px] lg:h-[40px] px-[10px] justify-center items-center gap-[10px] border-[1px] rounded-[4px] border-white cursor-pointer hidden md:flex">
         <button
+          onClick={() => router.push("/get-in-touch")}
           className="text-white md:text-[12px] lg:text-[14px] font-medium"
           style={{ fontFamily: "var(--font-inter)" }}
         >

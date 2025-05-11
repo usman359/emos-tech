@@ -7,21 +7,18 @@ export default function PageSpinner() {
   const pathname = usePathname();
 
   useEffect(() => {
-    // Function to handle route change start
     const handleRouteChangeStart = () => {
       if (pathname === "/") return;
+
       setIsLoading(true);
 
-      // Auto-hide after 1 second
       setTimeout(() => {
         setIsLoading(false);
       }, 400);
     };
 
-    // Call the function when pathname changes
     handleRouteChangeStart();
 
-    // Clean up timeout if component unmounts
     return () => {
       setIsLoading(false);
     };
