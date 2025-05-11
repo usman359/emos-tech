@@ -3,6 +3,7 @@ import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/ui/Header";
 import Footer from "@/components/ui/Footer";
+import PageSpinner from "@/components/ui/PageSpinner";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -31,7 +32,9 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} ${inter.variable} antialiased bg-[#121212]`}
       >
+        <PageSpinner />
         <Header />
+
         {children}
         <Footer />
       </body>
