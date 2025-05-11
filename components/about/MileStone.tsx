@@ -28,13 +28,16 @@ const MileStone = () => {
           </div>
 
           <div className="absolute top-[50%] left-1/2 lg:left-[30%] xl:left-[39%] translate-x-[-50%] translate-y-[-50%]">
-            <h1 className="max-w-[581px] h-[208px] text-[#00AA9C] text-center text-[90px] lg:text-[140px] xl:text-[200px] font-bold lg:leading-[168px] xl:leading-[222px] xl:tracking-[2px] [text-shadow:-12px_16px_18.6px_rgba(0,0,0,0.44)]">
+            <h1 className="max-w-[581px] min-h-[208px] text-[#00AA9C] text-center text-[90px] lg:text-[140px] xl:text-[200px] font-bold lg:leading-[168px] xl:leading-[222px] xl:tracking-[2px] [text-shadow:-12px_16px_18.6px_rgba(0,0,0,0.44)]">
               2024
             </h1>
           </div>
 
-          <div className="flex max-w-[471px] h-[200px] justify-center items-center">
-            <p className="text-[#FEFEFE] text-center tracking-[1.76px] leading-[35px] text-[16px] lg:text-[20px] xl:text-[24px] font-medium lg:leading-[28px] xl:leading-[35px] xl:tracking-[2.64px]">
+          <div className="mt-[80px] flex max-w-[471px] min-h-[200px] justify-center items-center">
+            <p
+              style={{ fontFamily: "var(--font-poppins)" }}
+              className="text-[#FEFEFE] text-center tracking-[1.76px] leading-[35px] text-[16px] lg:text-[20px] xl:text-[24px] font-medium lg:leading-[28px] xl:leading-[35px] xl:tracking-[2.64px]"
+            >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
               venenatis mauris urna, at eleifend nulla maximus non. Donec
               elementum, sapien quis tempus ultricies, nunc orci dignissim

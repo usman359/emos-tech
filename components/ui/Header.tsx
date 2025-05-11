@@ -17,6 +17,7 @@ import {
 } from "../../components/ui/dropdown-menu";
 
 import { useRouter, usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const servicesItems = [
   {
@@ -44,6 +45,23 @@ const servicesItems = [
 const Header = () => {
   const router = useRouter();
   const pathname = usePathname();
+  const [prevPath, setPrevPath] = useState("/");
+
+  useEffect(() => {
+    // Skip for the initial render and get-in-touch page
+    if (typeof window !== "undefined" && pathname !== "/get-in-touch") {
+      // Store the current path for future reference
+      localStorage.setItem("prevPath", pathname);
+      setPrevPath(pathname);
+    } else if (typeof window !== "undefined") {
+      // On get-in-touch page, get the previous path from localStorage
+      const storedPath = localStorage.getItem("prevPath") || "/";
+      setPrevPath(storedPath);
+    }
+  }, [pathname]);
+
+  // Determine active path - use prevPath when on get-in-touch page
+  const activePath = pathname === "/get-in-touch" ? prevPath : pathname;
 
   return (
     <header className="px-[21px] sm:px-[28px] lg:px-[58px] h-[80px] border-[0.5px] border-[rgba(0,151,138,0.34)] flex items-center justify-between relative">
@@ -59,7 +77,7 @@ const Header = () => {
         <NavigationMenuList className="flex items-center gap-[40px]">
           <NavigationMenuItem
             className={`text-[20px] leading-[28px] tracking-[-0.4px] ${
-              pathname === "/" ? "text-[#00AA9C]" : "text-white"
+              activePath === "/" ? "text-[#00AA9C]" : "text-white"
             }`}
           >
             <NavigationMenuLink
@@ -71,7 +89,7 @@ const Header = () => {
           </NavigationMenuItem>
           <NavigationMenuItem
             className={`text-[20px] leading-[28px] tracking-[-0.4px] ${
-              pathname === "/about" ? "text-[#00AA9C]" : "text-white"
+              activePath === "/about" ? "text-[#00AA9C]" : "text-white"
             }`}
           >
             <NavigationMenuLink
@@ -83,7 +101,7 @@ const Header = () => {
           </NavigationMenuItem>
           <NavigationMenuItem
             className={`text-[20px] leading-[28px] tracking-[-0.4px] ${
-              pathname === "/services" ? "text-[#00AA9C]" : "text-white"
+              activePath === "/services" ? "text-[#00AA9C]" : "text-white"
             }`}
           >
             <NavigationMenuTrigger>Services</NavigationMenuTrigger>
@@ -112,7 +130,7 @@ const Header = () => {
           </NavigationMenuItem>
           <NavigationMenuItem
             className={`text-[20px] leading-[28px] tracking-[-0.4px] ${
-              pathname === "/portfolio" ? "text-[#00AA9C]" : "text-white"
+              activePath === "/portfolio" ? "text-[#00AA9C]" : "text-white"
             }`}
           >
             <NavigationMenuLink
@@ -147,7 +165,7 @@ const Header = () => {
           <DropdownMenuContent className="bg-[#1E1E1E] text-white min-w-[200px] mr-4">
             <DropdownMenuItem
               className={`cursor-pointer hover:bg-[#00AA9C] text-[16px] py-2 ${
-                pathname === "/" ? "bg-[#00AA9C]" : ""
+                activePath === "/" ? "bg-[#00AA9C]" : ""
               }`}
               onClick={() => router.push("/")}
             >
@@ -155,7 +173,7 @@ const Header = () => {
             </DropdownMenuItem>
             <DropdownMenuItem
               className={`cursor-pointer hover:bg-[#00AA9C] text-[16px] py-2 ${
-                pathname === "/about" ? "bg-[#00AA9C]" : ""
+                activePath === "/about" ? "bg-[#00AA9C]" : ""
               }`}
               onClick={() => router.push("/about")}
             >
@@ -163,7 +181,7 @@ const Header = () => {
             </DropdownMenuItem>
             <DropdownMenuItem
               className={`cursor-pointer hover:bg-[#00AA9C] text-[16px] py-2 ${
-                pathname === "/services" ? "bg-[#00AA9C]" : ""
+                activePath === "/services" ? "bg-[#00AA9C]" : ""
               }`}
               onClick={() => router.push("/services")}
             >
@@ -171,7 +189,7 @@ const Header = () => {
             </DropdownMenuItem>
             <DropdownMenuItem
               className={`cursor-pointer hover:bg-[#00AA9C] text-[16px] py-2 ${
-                pathname === "/portfolio" ? "bg-[#00AA9C]" : ""
+                activePath === "/portfolio" ? "bg-[#00AA9C]" : ""
               }`}
               onClick={() => router.push("/portfolio")}
             >
@@ -179,7 +197,7 @@ const Header = () => {
             </DropdownMenuItem>
             <DropdownMenuItem
               className={`cursor-pointer hover:bg-[#00AA9C] text-[16px] py-2 ${
-                pathname === "/industries" ? "bg-[#00AA9C]" : ""
+                activePath === "/industries" ? "bg-[#00AA9C]" : ""
               }`}
               onClick={() => router.push("/industries")}
             >
