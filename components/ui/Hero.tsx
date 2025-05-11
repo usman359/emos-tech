@@ -1,3 +1,7 @@
+"use client";
+
+import { usePathname } from "next/navigation";
+
 const horizontalContainerItems = [
   {
     title: "+70",
@@ -26,6 +30,8 @@ const horizontalContainerItems = [
 ];
 
 const Hero = () => {
+  const pathname = usePathname();
+
   return (
     <section
       className="min-h-[904px]"
@@ -40,22 +46,31 @@ const Hero = () => {
     >
       {/* Hero container */}
       <div className="mx-auto flex w-[95%] max-w-[1149px] flex-col items-center justify-center py-[40px] sm:pt-[90px] sm:pb-[130px]">
-        <div className="flex max-w-[964px] flex-col items-center justify-center gap-[24px]">
+        <div className="flex  flex-col items-center justify-center gap-[24px]">
           <div className="flex flex-col items-center gap-[20px]">
-            <h1 className="flex flex-col text-center text-[24px] leading-[38px] font-bold text-[#FAFAFA] sm:text-[56px] sm:leading-[73px]">
-              <span>
-                Innovative{" "}
-                <span className="text-[#00AA9C]">Digital Solutions</span>
-              </span>
-              <span>for Business Growth, Success,</span>
-              <span>and Scalability</span>
-            </h1>
-            <p className="text-center text-[14px] font-medium tracking-[-0.28px] text-[#B4B4B4] sm:text-[20px] sm:tracking-[-0.4px] lg:leading-[28px]">
-              Unlock the full potential of your business with our innovative
-              web, mobile, and AI solutions. From seamless design to powerful
-              development, we help startups and enterprises achieve efficiency,
-              scalability, and long-term success in the digital world.
-            </p>
+            {pathname === "/" && (
+              <h1 className="flex flex-col max-w-[964px] text-center text-[24px] leading-[38px] font-bold text-[#FAFAFA] sm:text-[56px] sm:leading-[73px]">
+                <span>
+                  Innovative{" "}
+                  <span className="text-[#00AA9C]">Digital Solutions</span>
+                </span>
+                <span>for Business Growth, Success,</span>
+                <span>and Scalability</span>
+              </h1>
+            )}
+            {pathname === "/about" && (
+              <h1
+                style={{ fontFamily: "var(--font-poppins)" }}
+                className="flex flex-col text-center max-w-[1042px] text-[24px] leading-[38px] font-bold text-[#FAFAFA] sm:text-[56px] sm:leading-[73px]"
+              >
+                <span>About EMOS Technologies - </span>
+                <span>
+                  Building Tailored{" "}
+                  <span className="text-[#00AA9C]">Digital Solutions</span>
+                </span>
+                <span>for Tomorrow</span>
+              </h1>
+            )}
           </div>
 
           {/* Button */}

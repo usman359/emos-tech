@@ -1,4 +1,4 @@
-import Hero from "@/components/homepage/Hero";
+import Hero from "@/components/ui/Hero";
 import MileStone from "@/components/about/MileStone";
 import About from "@/components/about/About";
 import CoreValues from "@/components/about/CoreValues";

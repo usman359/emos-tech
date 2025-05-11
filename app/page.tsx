@@ -1,5 +1,5 @@
 import AboutUs from "@/components/homepage/AboutUs";
-import Hero from "@/components/homepage/Hero";
+import Hero from "@/components/ui/Hero";
 import Services from "@/components/homepage/Services";
 import WorldWide from "@/components/homepage/WorldWide";
 import CallToAction from "@/components/homepage/CallToAction";
