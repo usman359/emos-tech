@@ -22,22 +22,22 @@ import { useEffect, useState } from "react";
 const servicesItems = [
   {
     label: "Web App Development",
-    href: "/",
+    href: "/services/web-app-development",
     icon: "/header/web-app-development.svg",
   },
   {
     label: "Mobile App Development",
-    href: "/about",
+    href: "/services/mobile-app-development",
     icon: "/header/mobile-app-development.svg",
   },
   {
     label: "UI/UX Design",
-    href: "/services",
+    href: "/services/ui-ux-design",
     icon: "/header/ui-ux-design.svg",
   },
   {
     label: "AI Automation",
-    href: "/portfolio",
+    href: "/services/ai-automation",
     icon: "/header/ai-automation.svg",
   },
 ];
@@ -48,19 +48,15 @@ const Header = () => {
   const [prevPath, setPrevPath] = useState("/");
 
   useEffect(() => {
-    // Skip for the initial render and get-in-touch page
     if (typeof window !== "undefined" && pathname !== "/get-in-touch") {
-      // Store the current path for future reference
       localStorage.setItem("prevPath", pathname);
       setPrevPath(pathname);
     } else if (typeof window !== "undefined") {
-      // On get-in-touch page, get the previous path from localStorage
       const storedPath = localStorage.getItem("prevPath") || "/";
       setPrevPath(storedPath);
     }
   }, [pathname]);
 
-  // Determine active path - use prevPath when on get-in-touch page
   const activePath = pathname === "/get-in-touch" ? prevPath : pathname;
 
   return (
@@ -120,7 +116,10 @@ const Header = () => {
                       height={24}
                     />
 
-                    <h1 className="text-[#E0E0E0] text-[24px] font-normal leading-[32px] tracking-[-0.48px]">
+                    <h1
+                      onClick={() => router.push(item.href)}
+                      className="text-[#E0E0E0] text-[24px] font-normal leading-[32px] tracking-[-0.48px]"
+                    >
                       {item.label}
                     </h1>
                   </div>
